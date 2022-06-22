@@ -27,7 +27,7 @@
 		y: tileSize + 2,
 		width: 32,
 		height: 42,
-		speed: 5,
+		speed: 2.5,
 		//atributos de animação
 		srcX: 0,
 		srcY: 0,
@@ -198,7 +198,7 @@ var maze = [
 		if(mvLeft || mvRight || mvUp || mvDown){
 			player.countAnim++;
 			
-			if(player.countAnim >= 20){
+			if(player.countAnim >= 40){
 				player.countAnim = 0;
 			}
 			                                          //velocidade da animacao
