@@ -9,7 +9,7 @@
 	
 	var scene = new Image();
 	var imgPlayer = new Image();
-	imgPlayer.src = "img/duda.png";
+	imgPlayer.src = "img/dudaSprite.png";
 	scene.src = "img/scene.png";
 	scene.addEventListener("load",function(){
 		requestAnimationFrame(loop,cnv);
@@ -17,7 +17,7 @@
 
 	
 	var tileSize = 64;
-	var tileSrcSize = 96;
+	var tileSrcSize = 42;
 
 	//array que armazenará os muros do labirinto
 	var walls = [];
@@ -179,20 +179,35 @@ var maze = [
 	function update(){
 		if(mvLeft && !mvRight){
 			player.x -= player.speed;
-			player.srcX = tileSrcSize + player.width * 0
+			player.srcY = 0;
 		} else 
 		if(mvRight && !mvLeft){
 			player.x += player.speed;
-			player.srcX = tileSrcSize + player.width * 6
+			player.srcY = tileSrcSize + player.height * 1;
 		}
 		if(mvUp && !mvDown){
 			player.y -= player.speed;
-			player.srcX = tileSrcSize + player.width * 8
+			player.srcY = tileSrcSize + player.height * 2;
 		} else 
 		if(mvDown && !mvUp){
 			player.y += player.speed;
-			player.srcX = tileSrcSize + player.width * 1
+			player.srcY = tileSrcSize + player.height * 0;
 		}
+		//animação de movimento
+		//processo de animação
+		if(mvLeft || mvRight || mvUp || mvDown){
+			player.countAnim++;
+			
+			if(player.countAnim >= 20){
+				player.countAnim = 0;
+			}
+			                                          //velocidade da animacao
+			player.srcX = Math.floor(player.countAnim/10) * player.width;
+		} else {
+			player.srcX = 0;
+			player.countAnim = 0;
+		}
+
 		
 		for(var i in walls){
 			var wall = walls[i];
