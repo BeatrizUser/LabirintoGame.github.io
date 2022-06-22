@@ -1,0 +1,14 @@
+canvas{
+    width: auto;
+    height: 93vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 10px #3f3f3f ;
+}
+body{
+    background-color: #494848;
+}
+.canvasGameBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
